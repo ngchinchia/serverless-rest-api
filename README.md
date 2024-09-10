@@ -1,32 +1,33 @@
-Secure REST API for User Data Submission and Retrieval
-A serverless REST API built on AWS & serverless framework, designed to handle user data securely. The API supports both data submission and retrieval and includes comprehensive security measures to protect against common attacks. The architecture follows a variation of the Model-View-Controller (MVC) design pattern, ensuring a clean separation of concerns.
+Secure REST API for Membership Data Submission
+This project implements a secure REST API for handling membership data, using a serverless architecture with AWS services. The API enables data submission via a form and supports secure data handling and retrieval with encryption and validation.
 
 :ledger: Index
 About
+Architecture
 Usage
 Installation
 Commands
 Development
-Pre-Requisites
-Development Environment
-Architecture
 File Structure
 Build
 Security
 Community
 Contribution
-Branches
-Guideline
-FAQ
 Resources
 Credit/Acknowledgment
 License
 :beginner: About
-This project is a secure REST API designed to handle user data submissions through a serverless architecture utilizing AWS services. The API allows submission of various data types (text, email, boolean, phone number) and securely stores and retrieves this data. It is built with security best practices in mind, including protection against SQL injection, XSS, CSRF, and DDoS attacks.
+This project implements a secure REST API that collects, validates, and stores data from a membership sign-up form. It supports various data types like text, email, boolean, and phone numbers. Security measures like encryption, rate limiting, and validation are included to protect data and prevent attacks like SQL injection, XSS, and CSRF.
 
+:triangular_ruler: Architecture
+This project follows a modified MVC design pattern (Model-View-Controller) with additional layers for services and repositories. It is built on a serverless architecture using AWS services (e.g., Lambda, API Gateway, DynamoDB).
+
+Key Features:
+Data Submission: API endpoint to submit form data.
+Data Retrieval: API endpoint to fetch submitted data.
+Security: Implements encryption, validation, and rate limiting.
+Notifications: Triggers a notification (email or message) upon successful data submission.
 :zap: Usage
-This section outlines how to use the REST API.
-
 :electric_plug: Installation
 Clone the repository:
 
@@ -39,131 +40,67 @@ Install dependencies:
 bash
 Copy code
 npm install
-Deploy the serverless API:
-
-bash
-Copy code
-serverless deploy
 :package: Commands
-Run the project locally:
+To deploy the API using AWS Serverless Framework:
 
 bash
 Copy code
-serverless offline
-Deploy the project to AWS:
+sls deploy
+To test the API locally:
 
 bash
 Copy code
-serverless deploy
-Remove the service from AWS:
+sls offline
+To remove the API from AWS:
 
 bash
 Copy code
-serverless remove
+sls remove
 :wrench: Development
-:notebook: Pre-Requisites
-Node.js (v14 or later)
-Serverless Framework (npm install -g serverless)
-AWS Account with appropriate permissions for deploying Lambda functions and other resources
-AWS CLI configured for your local environment
-:nut_and_bolt: Development Environment
-Fork and clone the repository.
-
-Install dependencies:
-
-bash
-Copy code
-npm install
-Run the API locally:
-
-bash
-Copy code
-serverless offline
-Access the API via http://localhost:3000.
-
-:triangular_ruler: Architecture
-This project follows a variation of the Model-View-Controller (MVC) design pattern adapted for a serverless environment. The components are organized to promote a clear separation of concerns:
-
-Controller: Handles incoming HTTP requests and directs them to the appropriate service methods.
-Service: Contains the business logic and validation, processing data before it reaches the repository.
-Repository: Manages data persistence, interacting with the database to perform CRUD operations.
-Model: Defines the data structures and schemas used throughout the application.
-Handler: Serves as the entry point for AWS Lambda functions, integrating with the Serverless framework.
 :file_folder: File Structure
 bash
 Copy code
 function/
-└── userFunction/
-    ├── controller.mjs   # Handles API request logic
-    ├── service.mjs      # Business logic for data processing
-    ├── repository.mjs   # Database interaction (SQL/NoSQL)
-    ├── model.mjs        # Data model for user data schema
-    └── handler.mjs      # Entry point for Lambda functions
-No	File Name	Role
-1	controller.mjs	Controller: Manages HTTP requests and responses, interacts with the service layer
-2	service.mjs	Service: Implements business logic, validation, and calls the repository methods
-3	repository.mjs	Repository: Handles all database interactions (CRUD operations)
-4	model.mjs	Model: Defines data schemas and structures used in the application
-5	handler.mjs	Handler: Entry point for Lambda functions, routes requests to the appropriate controller
+├── userFunction/
+│   ├── controller.mjs      # Handles API requests
+│   ├── service.mjs         # Business logic for data submission and retrieval
+│   ├── repository.mjs      # Interacts with the database (DynamoDB)
+│   ├── model.mjs           # Data schema and validation
+│   └── handler.mjs         # Lambda handler for serverless functions
+└── serverless.yml          # Serverless framework configuration
+No	File Name	Description
+1	controller.mjs	Handles API requests and forwards them to service layer
+2	service.mjs	Contains business logic for data submission/retrieval
+3	repository.mjs	Handles database interaction (DynamoDB)
+4	model.mjs	Defines the data schema and validation rules
+5	handler.mjs	Serverless function entry point (Lambda)
 :hammer: Build
-To build and deploy the project to AWS:
+To deploy the API:
 
-Deploy using Serverless Framework:
-
+Configure AWS credentials.
+Run the following command:
 bash
 Copy code
-serverless deploy
-Access the deployed API via the API Gateway URL provided after deployment.
-
-:lock: Security
-Security features implemented in the API:
-
-Input Validation: All input data is validated server-side to ensure integrity and avoid common attacks.
-Rate Limiting: AWS API Gateway is configured with rate limiting to protect against DDoS attacks.
-Encryption: Sensitive data is transmitted over HTTPS and stored encrypted in the database.
-Sanitization: Inputs are sanitized to prevent SQL injection and XSS attacks.
-CSRF Protection: Implemented CSRF tokens or use of same-origin policies to protect against CSRF attacks.
-Notifications: An email notification is sent upon successful data submission.
+sls deploy
+After deployment, the API URL will be available in the console.
+:closed_lock_with_key: Security
+Encryption: Data submitted through the API is encrypted during transmission and stored securely in DynamoDB.
+Validation: Server-side validation ensures that only valid data is accepted.
+Rate Limiting: Prevents DDoS attacks by limiting the number of API calls.
+Best Practices: Following OWASP security guidelines to prevent vulnerabilities like SQL Injection, XSS, and CSRF.
 :cherry_blossom: Community
-We encourage contributions! Here's how you can get involved:
-
 :fire: Contribution
-Report Issues: Use the issues tracker to report bugs.
-Feature Requests: Suggest new features via this link.
-Pull Requests: Create pull requests to address issues or propose new features.
-:cactus: Branches
-main: The production-ready branch.
-develop: The active development branch for new features and fixes.
-:exclamation: Guideline
-Follow clean code principles and serverless best practices.
-Ensure unit and integration tests are included for new functionality.
-Keep security considerations in mind when making changes.
-Adhere to the MVC design pattern conventions used in this project.
-:question: FAQ
-How does the MVC pattern apply in a serverless architecture?
+We welcome contributions! Here's how you can get involved:
 
-In this project, the MVC components are adapted to fit serverless functions:
-
-Model: Data schemas and models used by the application.
-View: Since this is an API, the "View" is represented by the HTTP responses.
-Controller: Manages incoming requests and interacts with services.
-Service: Contains the business logic, acting as an intermediary between controllers and repositories.
-Repository: Handles data persistence.
-How do I ensure secure data transmission?
-
-All API endpoints use HTTPS, and sensitive data is encrypted both in transit and at rest.
-
-What database can I use with this project?
-
-You can choose between SQL databases like Amazon RDS (MySQL, PostgreSQL) or NoSQL databases like DynamoDB, depending on your data requirements.
-
+Report a bug: Submit a bug report here.
+Request a feature: Suggest new features here.
+Create a pull request: Fork the repository, make changes, and submit a pull request.
 :page_facing_up: Resources
-Serverless Framework Documentation
 AWS Lambda Documentation
-AWS API Gateway Documentation
-Understanding MVC Architecture
+Serverless Framework Documentation
+DynamoDB Documentation
 :star2: Credit/Acknowledgment
-This project is inspired by the need for secure data handling in modern applications.
-Special thanks to all contributors for their suggestions and improvements.
+Special thanks to the open-source community for their libraries and contributions.
+This project is built using the Serverless Framework.
 :lock: License
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the LICENSE.md file for more details.
