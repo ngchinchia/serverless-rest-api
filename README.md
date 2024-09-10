@@ -26,6 +26,9 @@ A serverless REST API built on AWS & serverless framework, designed to handle us
 ##  :beginner: About
 The API allows submission of various data types (text, email, boolean, phone number) and securely stores and retrieves this data. It is built with security best practices in mind, including protection against SQL injection, XSS, CSRF, and DDoS attacks. Additionally this project uses a variation of MVC design pattern called Controller-Service-Repository for clean separation of concerns.
 
+##  :techstack: Techonology Stack
+This project is built & tested using Serverless, AWS CLI, AWS Lambda, AWS ApiGateway, AWS DynamoDB, AWS SNS, NodeJS & PostMan.
+
 ## :zap: Usage
 This section outlines how to use the REST API.
 
