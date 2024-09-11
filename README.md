@@ -3,6 +3,8 @@
 
 A serverless REST API built on AWS & serverless framework, designed to handle user data securely. The API supports both data submission and retrieval, and includes comprehensive security measures to protect against common attacks. The architecture follows a clean separation of concerns with controllers, services, repositories, and models.
 
+https://github.com/user-attachments/assets/31239c4b-5488-44c3-b377-e10d2dd99d67
+
 ## :ledger: Index
 
 - [About](#beginner-about)
