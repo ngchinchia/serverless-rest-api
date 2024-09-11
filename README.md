@@ -130,9 +130,6 @@ We welcome contributions from the community! Here's how you can get involved:
       3. Follow along the installation and deployment instructions above.
       4. Note** : Ensure root user provides necessary access to IAM user.
 
-3. **Q: Can I use this component with JavaScript instead of TypeScript?**
-   A: Yes, but you'll need to remove type annotations and may lose some type safety benefits.
-
 ##  :page_facing_up: Resources
 - [Serverless Framework Documentation](https://www.serverless.com/framework/docs)
 
