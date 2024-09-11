@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/31239c4b-5488-44c3-b377-e10d2dd99d67
 ## :ledger: Index
 
 - [About](#beginner-about)
-- [Tech Stack](#techstack-tech)
+- [Tech Stack](#-tech-stack)
 - [Usage](#zap-usage)
   - [Installation](#electric_plug-installation)
   - [Commands](#package-commands)
@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/31239c4b-5488-44c3-b377-e10d2dd99d67
 ##  :beginner: About
 The API allows submission of various data types (text, email, boolean, phone number) and securely stores and retrieves this data. It is built with security best practices in mind, including protection against SQL injection, XSS, CSRF, and DDoS attacks. Additionally this project uses a variation of MVC design pattern called Controller-Service-Repository for clean separation of concerns.
 
-##  :techstack: tech
+## 💻 Tech Stack
 This project is built & tested using Serverless, AWS CLI, AWS Lambda, AWS ApiGateway, AWS DynamoDB, AWS SNS, NodeJS & PostMan.
 
 ## :zap: Usage
