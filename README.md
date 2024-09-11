@@ -6,6 +6,7 @@ A serverless REST API built on AWS & serverless framework, designed to handle us
 ## :ledger: Index
 
 - [About](#beginner-about)
+- [Tech Stack](#techstack-techstack)
 - [Usage](#zap-usage)
   - [Installation](#electric_plug-installation)
   - [Commands](#package-commands)
